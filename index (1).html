@@ -1,494 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Young Scientists Magazine | Edition I</title>
-<link
-href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@
-400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root {
---primary: #00ff88;
---secondary: #00d4ff;
---accent: #ff3366;
---dark: #0a0e14;
---darker: #050508;
---text: #e8f4f8;
---muted: #7a8a95;
-}
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-body {
-font-family: 'Space Mono', monospace;
-background: var(--darker);
-color: var(--text);
-overflow-x: hidden;
-line-height: 1.6;
-}
-/* Animated background */
-.bg-container {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: -1;
-background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Scientists Magazine | Edition I</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #00d4ff;
+            --accent: #ff3366;
+            --dark: #0a0e14;
+            --darker: #050508;
+            --text: #e8f4f8;
+            --muted: #7a8a95;
+        }
 
-.grid-overlay {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-image:
-linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
-background-size: 50px 50px;
-animation: gridMove 20s linear infinite;
-}
-@keyframes gridMove {
-0% { transform: translate(0, 0); }
-100% { transform: translate(50px, 50px); }
-}
-.floating-shapes {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-overflow: hidden;
-}
-.shape {
-position: absolute;
-border: 2px solid var(--primary);
-opacity: 0.1;
-animation: float 20s infinite ease-in-out;
-}
-.shape:nth-child(1) {
-width: 300px;
-height: 300px;
-top: 10%;
-left: 10%;
-border-radius: 50%;
-animation-delay: 0s;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.shape:nth-child(2) {
-width: 200px;
-height: 200px;
-top: 60%;
-right: 15%;
-animation-delay: 3s;
-}
-.shape:nth-child(3) {
-width: 150px;
-height: 150px;
-bottom: 20%;
-left: 50%;
-border-radius: 50%;
-animation-delay: 6s;
-}
-@keyframes float {
-0%, 100% { transform: translate(0, 0) rotate(0deg); }
-33% { transform: translate(50px, -30px) rotate(120deg); }
-66% { transform: translate(-30px, 50px) rotate(240deg); }
-}
-/* Header */
-header {
-position: relative;
-padding: 2rem;
-border-bottom: 2px solid var(--primary);
-background: rgba(10, 14, 20, 0.8);
-backdrop-filter: blur(10px);
-animation: slideDown 0.8s ease-out;
-}
-@keyframes slideDown {
-from {
-transform: translateY(-100%);
-opacity: 0;
-}
-to {
-transform: translateY(0);
-opacity: 1;
-}
-}
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--darker);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-.logo {
-font-family: 'Archivo Black', sans-serif;
-font-size: clamp(2rem, 8vw, 4.5rem);
-text-transform: uppercase;
-letter-spacing: -0.02em;
-line-height: 1;
-margin-bottom: 0.5rem;
-background: linear-gradient(135deg, var(--primary), var(--secondary));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-animation: glow 3s ease-in-out infinite;
-}
-@keyframes glow {
-0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3)); }
-50% { filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.5)); }
-}
-.edition {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.9rem;
-color: var(--secondary);
-text-transform: uppercase;
-letter-spacing: 0.2em;
-animation: fadeIn 1s ease-out 0.3s both;
-}
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
-}
-/* Main Content */
-main {
-max-width: 1200px;
-margin: 0 auto;
-padding: 4rem 2rem;
-}
-.hero {
-margin-bottom: 4rem;
-animation: fadeInUp 1s ease-out 0.5s both;
-}
+        /* Animated background */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+        }
 
-@keyframes fadeInUp {
-from {
-opacity: 0;
-transform: translateY(30px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-.tagline {
-font-size: clamp(1.2rem, 4vw, 2rem);
-font-weight: 700;
-margin-bottom: 2rem;
-line-height: 1.3;
-color: var(--primary);
-}
-.tagline span {
-color: var(--text);
-}
-.subtitle {
-font-size: clamp(1rem, 2.5vw, 1.3rem);
-color: var(--muted);
-margin-bottom: 1rem;
-font-style: italic;
-}
-/* Submission Section */
-.submission-box {
-background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 212, 255, 0.05));
-border: 2px solid var(--primary);
-border-radius: 0;
-padding: 3rem;
-margin-bottom: 3rem;
-position: relative;
-overflow: hidden;
-animation: fadeInUp 1s ease-out 0.7s both;
-}
-.submission-box::before {
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
 
-content: '';
-position: absolute;
-top: -2px;
-left: -2px;
-right: -2px;
-bottom: -2px;
-background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent),
-var(--primary));
-background-size: 400% 400%;
-animation: borderGlow 8s ease infinite;
-z-index: -1;
-opacity: 0.5;
-filter: blur(10px);
-}
-@keyframes borderGlow {
-0%, 100% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-}
-.submission-box h2 {
-font-family: 'Archivo Black', sans-serif;
-font-size: clamp(1.5rem, 4vw, 2.5rem);
-margin-bottom: 1.5rem;
-color: var(--secondary);
-text-transform: uppercase;
-}
-.submission-types {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 1rem;
-margin: 2rem 0;
-}
-.type-card {
-background: rgba(0, 255, 136, 0.08);
-border: 1px solid rgba(0, 255, 136, 0.3);
-padding: 1.5rem;
-transition: all 0.3s ease;
-position: relative;
-}
-.type-card::before {
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
 
-content: '→';
-position: absolute;
-left: 1rem;
-top: 50%;
-transform: translateY(-50%) translateX(-10px);
-opacity: 0;
-color: var(--primary);
-font-size: 1.5rem;
-transition: all 0.3s ease;
-}
-.type-card:hover {
-background: rgba(0, 255, 136, 0.15);
-border-color: var(--primary);
-transform: translateX(10px);
-padding-left: 2.5rem;
-}
-.type-card:hover::before {
-opacity: 1;
-transform: translateY(-50%) translateX(0);
-}
-.type-card h3 {
-font-size: 1.1rem;
-color: var(--primary);
-margin-bottom: 0.5rem;
-font-weight: 700;
-}
-.type-card p {
-font-size: 0.85rem;
-color: var(--muted);
-}
-.note {
-background: rgba(255, 51, 102, 0.1);
-border-left: 4px solid var(--accent);
-padding: 1rem 1.5rem;
-margin: 2rem 0;
-font-size: 0.95rem;
-}
-.note strong {
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
-color: var(--accent);
-}
-/* Contact Button */
-.contact-section {
-text-align: center;
-margin: 3rem 0;
-}
-.contact-btn {
-display: inline-block;
-background: linear-gradient(135deg, var(--primary), var(--secondary));
-color: var(--darker);
-padding: 1.2rem 3rem;
-font-size: 1.1rem;
-font-weight: 700;
-text-decoration: none;
-text-transform: uppercase;
-letter-spacing: 0.1em;
-font-family: 'JetBrains Mono', monospace;
-transition: all 0.3s ease;
-position: relative;
-overflow: hidden;
-}
-.contact-btn::before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: rgba(255, 255, 255, 0.3);
-transition: left 0.3s ease;
-}
-.contact-btn:hover::before {
-left: 100%;
-}
-.contact-btn:hover {
-transform: translateY(-2px);
-box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
-}
+        .shape {
+            position: absolute;
+            border: 2px solid var(--primary);
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
 
-/* Editor Section */
-.editor-section {
-background: rgba(10, 14, 20, 0.6);
-border: 1px solid rgba(0, 212, 255, 0.3);
-padding: 3rem;
-margin-top: 4rem;
-animation: fadeInUp 1s ease-out 0.9s both;
-}
-.editor-section h2 {
-font-family: 'Archivo Black', sans-serif;
-font-size: clamp(1.3rem, 3vw, 2rem);
-color: var(--secondary);
-margin-bottom: 1rem;
-text-transform: uppercase;
-}
-.editor-quote {
-font-size: 1.1rem;
-font-style: italic;
-color: var(--muted);
-margin: 1.5rem 0;
-padding-left: 2rem;
-border-left: 3px solid var(--secondary);
-}
-.editor-name {
-font-size: 1rem;
-color: var(--primary);
-font-weight: 700;
-margin-top: 1rem;
-}
-/* Footer */
-footer {
-text-align: center;
-padding: 3rem 2rem;
-border-top: 1px solid rgba(0, 255, 136, 0.2);
-margin-top: 4rem;
-animation: fadeIn 1s ease-out 1.1s both;
-}
-.gen-z-tag {
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
 
-font-family: 'Archivo Black', sans-serif;
-font-size: clamp(1rem, 2.5vw, 1.5rem);
-color: var(--primary);
-text-transform: uppercase;
-letter-spacing: 0.05em;
-margin-bottom: 1rem;
-}
-footer p {
-color: var(--muted);
-font-size: 0.9rem;
-}
-/* Responsive */
-@media (max-width: 768px) {
-.submission-box {
-padding: 2rem 1.5rem;
-}
-.editor-section {
-padding: 2rem 1.5rem;
-}
-.type-card:hover {
-transform: none;
-padding-left: 1.5rem;
-}
-}
-/* Scroll indicator */
-.scroll-indicator {
-position: fixed;
-bottom: 2rem;
-left: 50%;
-transform: translateX(-50%);
-color: var(--primary);
-font-size: 0.8rem;
-text-transform: uppercase;
-letter-spacing: 0.2em;
-animation: bounce 2s infinite;
-opacity: 0.6;
-}
-@keyframes bounce {
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 3s;
+        }
 
-0%, 100% { transform: translateX(-50%) translateY(0); }
-50% { transform: translateX(-50%) translateY(10px); }
-}
-/* Hide scroll indicator after scrolling */
-body.scrolled .scroll-indicator {
-opacity: 0;
-pointer-events: none;
-}
-</style>
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 50%;
+            border-radius: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(50px, -30px) rotate(120deg); }
+            66% { transform: translate(-30px, 50px) rotate(240deg); }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            padding: 2rem;
+            border-bottom: 2px solid var(--primary);
+            background: rgba(10, 14, 20, 0.8);
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.5)); }
+        }
+
+        .edition {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .hero {
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tagline {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.3;
+            color: var(--primary);
+        }
+
+        .tagline span {
+            color: var(--text);
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* Submission Section */
+        .submission-box {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 212, 255, 0.05));
+            border: 2px solid var(--primary);
+            border-radius: 0;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .submission-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 400% 400%;
+            animation: borderGlow 8s ease infinite;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(10px);
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .submission-box h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+        }
+
+        .submission-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .type-card {
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .type-card::before {
+            content: '→';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            opacity: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .type-card:hover {
+            background: rgba(0, 255, 136, 0.15);
+            border-color: var(--primary);
+            transform: translateX(10px);
+            padding-left: 2.5rem;
+        }
+
+        .type-card:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .type-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .type-card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .note {
+            background: rgba(255, 51, 102, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .note strong {
+            color: var(--accent);
+        }
+
+        /* Contact Button */
+        .contact-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--darker);
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.3s ease;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Editor Section */
+        .editor-section {
+            background: rgba(10, 14, 20, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 3rem;
+            margin-top: 4rem;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .editor-section h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .editor-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--muted);
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .editor-name {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            margin-top: 4rem;
+            animation: fadeIn 1s ease-out 1.1s both;
+        }
+
+        .gen-z-tag {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .submission-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .editor-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .type-card:hover {
+                transform: none;
+                padding-left: 1.5rem;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            animation: bounce 2s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Hide scroll indicator after scrolling */
+        body.scrolled .scroll-indicator {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-<div class="bg-container">
-<div class="grid-overlay"></div>
-<div class="floating-shapes">
-<div class="shape"></div>
-<div class="shape"></div>
-<div class="shape"></div>
-</div>
-</div>
-<header>
-<div style="text-align: center; margin-bottom: 1.5rem;">
-<img src="Black_Pink_Y2K_Illustration_Streetwear_Logo__2_.png" 
-     alt="Young Scientists Magazine Logo" 
-     style="width: 120px; height: auto; opacity: 0.9; animation: fadeIn 1s ease-out;">
-</div>
-<h1 class="logo">Young Scientists<br>Magazine</h1>
-<div class="edition">Edition I</div>
-</header>
-<main>
-<section class="hero">
-<h2 class="tagline">
-We seek <span>the stuff written by you.</span>
-</h2>
-<p class="subtitle">Your ideas. Your experiments. Your voice.</p>
-</section>
-<section class="submission-box">
-<h2>Submit Your Work</h2>
-<p>Share your scientific journey with fellow Gen Z researchers. We're looking for
-authentic, creative contributions from young minds pushing boundaries.</p>
-<div class="submission-types">
-<div class="type-card">
-<h3>Ideas</h3>
-<p>Theoretical concepts, hypotheses, and innovative thoughts</p>
-</div>
+    <div class="bg-container">
+        <div class="grid-overlay"></div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
 
-<div class="type-card">
-<h3>Lab Experiments</h3>
-<p>Academic research, protocols, and findings</p>
-</div>
-<div class="type-card">
-<h3>Kitchen Experiments</h3>
-<p>DIY science, home projects, and accessible research</p>
-</div>
-<div class="type-card">
-<h3>Essays</h3>
-<p>Opinion pieces, analyses, and scientific commentary</p>
-</div>
-<a href="project-reports.html" style="text-decoration: none; color: inherit;">
-<div class="type-card">
-<h3>Project Reports</h3>
-<p>Comprehensive documentation of your work</p>
-</div>
-</a>
-</div>
-<div class="note">
-<strong>Note:</strong> AI use is allowed and encouraged. We believe in embracing
-the tools of our generation.
-</div>
-<div class="contact-section">
-<a href="/cdn-cgi/l/email-protection#691f0a1b0b06000005060a0805290e04080005470a0604" class="contact-btn">Submit Your Work</a>
-</div>
-</section>
-<section class="editor-section">
-<h2>From the Editor</h2>
-<div class="editor-quote">
-"I have nothing to say. I am frustrated and sad from the academia in Pakistan."
-</div>
-<div class="editor-name">— Muhammad Mahad Bin Shahid, Editor in Chief</div>
-</section>
-</main>
-<footer>
-<div class="gen-z-tag">From a Gen Z scientist<br>for Gen Z scientists.</div>
-<p>&copy; 2024 Young Scientists Magazine | Edition I</p>
-</footer>
-<div class="scroll-indicator">↓ Scroll</div>
+    <header>
+        <h1 class="logo">Young Scientists<br>Magazine</h1>
+        <div class="edition">Edition I</div>
+    </header>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Hide scroll indicator after scrolling
-window.addEventListener('scroll', function() {
-if (window.scrollY > 100) {
-document.body.classList.add('scrolled');
-} else {
-document.body.classList.remove('scrolled');
-}
-});
-// Add hover effect sound (optional - can be enhanced with actual audio)
-document.querySelectorAll('.type-card').forEach(card => {
+    <main>
+        <section class="hero">
+            <h2 class="tagline">
+                We seek <span>the stuff written by you.</span>
+            </h2>
+            <p class="subtitle">Your ideas. Your experiments. Your voice.</p>
+        </section>
+
+        <section class="submission-box">
+            <h2>Submit Your Work</h2>
+            <p>Share your scientific journey with fellow Gen Z researchers. We're looking for authentic, creative contributions from young minds pushing boundaries.</p>
+
+            <div class="submission-types">
+                <div class="type-card">
+                    <h3>Ideas</h3>
+                    <p>Theoretical concepts, hypotheses, and innovative thoughts</p>
+                </div>
+                <div class="type-card">
+                    <h3>Lab Experiments</h3>
+                    <p>Academic research, protocols, and findings</p>
+                </div>
+                <div class="type-card">
+                    <h3>Kitchen Experiments</h3>
+                    <p>DIY science, home projects, and accessible research</p>
+                </div>
+                <div class="type-card">
+                    <h3>Essays</h3>
+                    <p>Opinion pieces, analyses, and scientific commentary</p>
+                </div>
+                <div class="type-card">
+                    <h3>Project Reports</h3>
+                    <p>Comprehensive documentation of your work</p>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Note:</strong> AI use is allowed and encouraged. We believe in embracing the tools of our generation.
+            </div>
+
+            <div class="contact-section">
+                <a href="mailto:vcrboiilocal@gmail.com" class="contact-btn">Submit Your Work</a>
+            </div>
+        </section>
+
+        <section class="editor-section">
+            <h2>From the Editor</h2>
+            <div class="editor-quote">
+                "I have nothing to say. I am frustrated and sad from the academia in Pakistan."
+            </div>
+            <div class="editor-name">— Muhammad Mahad Bin Shahid, Editor in Chief</div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="gen-z-tag">From a Gen Z scientist<br>for Gen Z scientists.</div>
+        <p>&copy; 2024 Young Scientists Magazine | Edition I</p>
+    </footer>
+
+    <div class="scroll-indicator">↓ Scroll</div>
+
+    <script>
+        // Hide scroll indicator after scrolling
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+
+        // Add hover effect sound (optional - can be enhanced with actual audio)
+        document.querySelectorAll('.type-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+        });
+    </script>
+</body>
+</html>
+
